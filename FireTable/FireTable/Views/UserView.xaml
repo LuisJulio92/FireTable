@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FireTable.Views.UserView">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="500"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackLayout Grid.Row="0">
+
+            <StackLayout>
+                <Image x:Name="imageTe"
+                   MinimumHeightRequest="100"
+                   HorizontalOptions="Center"
+                   Margin="20"/>
+            </StackLayout>
+            <Entry Placeholder="Usuario"
+                  x:Name="txtUser"/>
+
+            <Entry Placeholder="Usuario"
+                  x:Name="txtPassword"/>
+
+            <Button Text="Guardar"
+                    x:Name="BtnSave"
+                    Clicked="BtnSave_Clicked"/>
+
+            <Button Text="Agregar Imagen"
+                    x:Name="btnUploadImage"
+                    Clicked="btnUploadImage_Clicked"/>
+
+            <Button Text="Eliminar"
+                    x:Name="btnEliminar"
+                    Clicked="btnEliminar_Clicked"/>
+
+            <Button Text="Editar"
+                    x:Name="btnEditar"
+                    Clicked="btnEditar_Clicked"/>
+        </StackLayout>
+
+        <CollectionView Grid.Row="1"
+                        x:Name="listUser"
+                        VerticalScrollBarVisibility="Never"
+                        Margin="5">
+
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical"
+                                 Span="2"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+
+                    <Frame
+                        CornerRadius="5"
+                        BackgroundColor="Transparent"
+                        Margin="10">
+                        <Grid>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="130"/>
+                                <RowDefinition Height="40"/>
+                            </Grid.RowDefinitions>
+
+                            <ImageButton Source="{Binding Icon}"
+                                         CommandParameter="{Binding Id_Usuario}"
+                                         BackgroundColor="WhiteSmoke"
+                                         VerticalOptions="Fill"
+                                         HorizontalOptions="Fill"
+                                         Aspect="AspectFit"
+                                         x:Name="btnIcon"
+                                         Grid.Row="0"
+                                         Clicked="btnIcon_Clicked"/>
+
+                            <Label Text="{Binding Name}"
+                               Grid.Row="1"
+                               VerticalTextAlignment="Center"
+                               HorizontalTextAlignment="Center"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalOptions="FillAndExpand"
+                               FontAttributes="Bold"
+                               TextColor="White"
+                               BackgroundColor="Black"/>
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>
